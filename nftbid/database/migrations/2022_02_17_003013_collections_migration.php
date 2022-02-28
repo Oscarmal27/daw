@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('offices', function(Blueprint $table){
-          $table->increments('id');
-          $table->integer('id_country')->unsigned();
-          $table->string('key');
-          $table->timestamps();
-          $table->foreign('id_country')->references('id')->on('countries');
+        Schema::create('collections',function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('created_by')->unsigned();
+            $table->string('name');
+            $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('offices');
+        Schema::dropIfExists('collections');
     }
 };

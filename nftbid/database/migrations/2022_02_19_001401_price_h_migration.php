@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('offices', function(Blueprint $table){
-          $table->increments('id');
-          $table->integer('id_country')->unsigned();
-          $table->string('key');
-          $table->timestamps();
-          $table->foreign('id_country')->references('id')->on('countries');
+        Schema::create('price_history', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('id_nft')->unsigned();
+            $table->integer('price');
+            $table->timestamps();
+            $table->foreign('id_nft')->references('id')->on('nfts');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('offices');
+        Schema::dropIfExists('price_history');
     }
 };

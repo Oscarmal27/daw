@@ -14,12 +14,11 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('offices', function(Blueprint $table){
-          $table->increments('id');
-          $table->integer('id_country')->unsigned();
-          $table->string('key');
-          $table->timestamps();
-          $table->foreign('id_country')->references('id')->on('countries');
+        Schema::create('categories', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('category');
+            $table->string('img');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('offices');
+        Schema::dropIfExists('categories');
     }
 };
